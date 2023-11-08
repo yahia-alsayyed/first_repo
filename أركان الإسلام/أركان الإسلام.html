@@ -1,0 +1,321 @@
+<!DOCTYPE html><!--html 5, render mode is standard mode -->
+<html dir="rtl" style="direction:rtl;">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="discription" context="هذه هي أركان الإسلام الخمسة">
+		<title>أركان الإسلام</title>
+		<style>
+			body {
+		        color: rgb(0 0 128 / 100%);
+		        opacity: 100%;
+		        /* الخاصية opacity تتحكم في شفافية العنصر كاملًا */
+			}
+			.first_text {
+				background-color: aqua;
+				padding: 2px 6px;
+				border-radius: 3px;
+				width: fit-content;
+			}
+			.first_text:hover {
+				color: olive;
+			}
+			.first_text::selection {
+				background-color: darkgreen;
+				color: white
+			}
+			.hadith {
+				position: relative;
+				background-color: rgb(255 255 128 / 50%);
+				padding: 2mm 4mm 2mm 4mm;
+				border-width: 3px;
+				border-color: skyblue;
+				border-style: solid;
+				margin: 10px 5% 10px 5%;
+				/*
+				padding: المسافة الداخلية
+				border: الإطار
+				margin: المسافة الخارجية
+				تحدد اتجاهات المسافات والألوان بنفس اتجاه عقارب الساعة
+				(top, right, bottom, left)
+				*/
+				transition-property: all;
+				transition-duration: 2s;
+				transition-delay: 0s;
+				transition-timing-function: ease;
+				/*
+				transition: خاصية انتقال العنصر من صفة إلى صفة أخرى
+				-property: الخواص المطبق عليها الحركة
+				>> all: لتطبيق الحركة على كل العناصر القابلة للحركة
+				hover: هو العنصر الزائف الذي سنرى هنا من خلاله تأثير الإنتقال
+				-duration: زمن الإنتقال
+				-delay: المهلة قبل بدء حركة الإنتقال
+				-timing-function: طريقة الحركة
+				>> ease: أي تكون الحركة بطيئة ثم سريعة ثم بطيئة
+				*/
+			}
+			.hadith:hover {
+				border-color: green;
+			}
+			.hadith::before {
+				position: absolute;
+    			content: "";
+    			width: 20px;
+    			height: 20px;
+    			right: -30px;
+    			top: calc(50% - 2mm - 3px);
+    			background-color: coral;
+    			border-radius: 10px;
+			}
+			.question {
+				font-size: 5vw;
+				/*
+                vw:حجم الخط معتمد على نسبته من العرض
+                */
+			}
+			.opinion_head {
+				color: wheat;
+				padding: 5px;
+				background-image: linear-gradient(120deg, red 20px, blue 20px, blue 100px, green 100px, blue, red);
+			}
+			.float_father {
+				background-color:aqua;
+				padding:10px;
+				margin:10px;
+			}
+			.float_divs {
+				background-color: rgb(0 128 0 / 50%);
+				width: calc((100% - 40px) / 5);
+				min-width: 60px;
+				height: fit-content;
+				margin-bottom: 1px;
+				margin-right: 5px;
+				padding: 1px;
+				float: right;
+				/*
+                float: هي خاصية لتعويم العناصر
+                */
+			}
+			.flex_father {
+				background-color: rgb(190, 190, 255);
+				padding:10px;
+				margin:10px;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				/*
+				row: أفقي نفس اتجاه الصفحة
+				row-reverse: أفقي عكس اتجاه الصفحة
+				column: عمودي في الإتجاه الطبيعي
+				column-reverse: أفقي في عكس الإتجاه الطبيعي
+				*/
+				flex-flow: row nowrap;
+				/* هذه الخاصية تجمع بين الخاصيتين التين فوقها */
+				overflow: auto;
+				justify-content: space-between;
+			}
+			.flex_divs {
+				background-color: rgb(0 128 0 / 50%);
+				width: 17%;
+				min-width: 60px;
+				/*
+				تقوم خاصية الصندوق المرن بتقليل عرض العناصر بداخله ليتناسب مع محتوى الصندوق
+				فمثلا: العرض 20% يكفي على الأقل لخمس عناصر أو أقل، فإذا كبر حجم العنصر أو أضفنا عنصرا آخر سيقل عرض كل عنصر تلقائيا حتى يتناسب مع الصندوق فلا ينزل عنصرا إلى سطر آخر
+				فإذا ظل تقليل العرض تلقائيا حتى يصل إلى قيمة صغرى وهي هنا 60 بي إكس، تخرج العناصر خارج الصندوق..
+				إلا إذا أضفنا مؤشر تمرير عبر هذه الخاصية أو ما شابهها في ال"ديف" الأب
+				over-flow: auto;
+
+				nowrap: خاصية في الصندوق الأب تتيح هذا الكلام المذكور، وهي القيمة الإفتراضية
+				wrap: يتجاهل الكلام المذكور ويتيح للعناصر نزولها لسطر جديد
+				*/
+				height: fit-content;
+				margin: 1px;
+				padding: 2px 3px;
+			}
+			.grid_father {
+				background-color: greenyellow;
+				padding: 10px;
+				margin: 10px;
+				display: grid;
+				grid-template-rows: auto;
+				grid-template-columns: repeat(5, minmax(60px, auto));
+				gap: 5px;
+				overflow: auto;
+			}
+			.grid_divs {
+				background-color: rgb(0 128 0 / 50%);
+				height: fit-content;
+				margin: 1px;
+				padding: 2px 3px;
+			}
+			@keyframes change_badr {
+				0% {
+					transform: translate(0%);
+				}
+				33% {
+					transform: translate(50%);
+				}
+				67% {
+					transform: translate(-50%);
+				}
+				100% {
+					transform: translate(0%);
+				}
+			}
+			.badr {
+				display: block;
+				margin: auto;
+				animation-name: change_badr;
+				animation-duration: 5s;
+				animation-iteration-count: 3;
+				animation-timing-function: ease;
+				animation-direction: normal;
+				animation-delay: 0s; /*وقت الإنتظار قبل بدإ الرسم*/
+				animation-play-state: running;
+			}
+			.ض {
+				text-indent: 10mm;
+				color: white;
+				background-color: gray;
+			}
+			.ض:hover {
+				filter: invert(100%);
+			}
+			@media print {
+				.badr , .badr + hr {
+					display: none;
+				}
+			}
+		</style>
+		<style media="(max-width: 480px)">
+			.badr , .badr + hr {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="The_Pillars">
+			<!--
+		        Class Without spaces ?
+		    -->
+			<center><h1 class="first_text">أركان الإسلام الخمسة:</h1></center>
+			<ol style="list-style-type:arabic-indic;">
+				<li>شهادة أن لا إله إلا الله وأن محمدًا رسول الله</li>
+				<li>إقامة الصلاة</li>
+				<li>إيتاء الزكاة</li>
+				<li>صوم رمضان</li>
+				<li>حج بيت الله الحرام</li>
+			</ol>
+		</div>
+		<hr><!--Draw a line-->
+		<span>هذا مصحف</span>
+		<img
+            src="صورة المصحف.jpg" alt="quran_image" title="صورة المصحف"
+            width="129.11392405px" height="100px"
+            style="vertical-align:middle;">
+		<span style="display:block;">وهو الكتاب المقدس لدى المسلمين، الذي أُنزِل على الرسول صلى الله عليه وسلم </span>
+		<hr><!--Draw a line-->
+		<p class="hadith">
+		عن عمر رضي الله عنه قال:
+		بينما نحن جلوس عند رسول الله ﷺ ذات يومٍ
+		إذ طلع علينا رجلٌ شديد بياض الثياب، شديد سواد الشعر،
+		لا يُرى عليه أثر السفر، ولا يعرفه منا أحد،
+		حتى جلس إلى النبي ﷺ،
+		فأسند ركبتيه إلى ركبتيه، ووضع كفيه على فخذيه،
+		وقال: يا محمد، أخبرني عن الإسلام، فقال رسولُ الله ﷺ:
+		الإسلام أن تشهد أن لا إله إلا الله، وأن محمدًا رسول الله،
+		وتُقيم الصلاة، وتُؤتي الزكاة،
+		وتصوم رمضان، وتحج البيت إن استطعتَ إليه سبيلًا
+		</p>
+		<hr>
+		<img class="badr" src="صورة بدر.jpeg" alt="صورة بدر">
+		<hr>
+		<form class="The_first_form" action="">
+			<!--
+			السمة (action) تحدد الموقع أو الملف المحدد له أن يستقبل بيانات ال(form)
+			-->
+			<div class="The_text_in_the_first_form">
+		        <label>تحدث عن الإسلام</label>
+			    <textarea required style="display:block;"
+                    placeholder="اكتب هنا"
+                    name="writing about Islam"
+                    minlength="2"
+                    cols="20" rows="10"></textarea>
+                <!--
+                type: نوع المدخل (input)
+                required: الإدخال مطلوب
+                placeholder: الملحوظة الموضحة في المدخل قبل الكتابة
+                name: اسم المدخل عند الخادم
+                minlengh: أقل عدد أحرف يمكن كتابتها
+                -->
+            </div>
+            <br>
+            <label class="question">ما عدد أركان الإسلام ؟</label>
+            <input style="vertical-align:middle; outline:auto darkgreen;" type="number" autofocus min="1" max="5" step="1">
+            <!--autofocus: ذهاب موشر الكتابة تلقائيا إلى هذا المدخل-->
+			<!--outline: تحديد شكل الإطار المحيط بالعنصر-->
+            	
+            <h2 class="opinion_head">ما رأيك في الموقع ؟</h2>
+            <input type="radio" id="exce." name="opinion" value="excellent">
+            <label for="exce.">جيد</label>
+            <br>
+            <input type="radio" id="vg." name="opinion" value="very good">
+            <label for="vg.">جيد ولكن يحتاج لبعض التعديلات</label>
+            <br>
+            <input type="radio" id="cha." name="opinion" value="change">
+            <label for="cha.">يحتاج إلى تعديلات كثيرة</label>
+            
+            <input type="file" style="display:block;">
+            <input type="submit" style="display:block; cursor:pointer;">
+		</form>
+		<hr>
+			
+		<p>أركان الإسلام الخمسة: كتابة باستخدام خاصية float</p>
+		<div class="float_father">
+			<div class="float_divs">شهادة أن لا إله إلا الله وأن محمدًا رسول الله</div>
+			<div class="float_divs">إقامة الصلاة</div>
+			<div class="float_divs">إيتاء الزكاة</div>
+			<div class="float_divs">صوم رمضان</div>
+			<div class="float_divs">حج بيت الله الحرام</div>
+		    <div style="clear:both;"></div>
+				<!--
+				الخاصية clear لها: القيمة both والقيمة left والقيمة right وقيم أخرى
+				يستخدم هذا الdiv ليكون عنصرا لا يتبع إخوانه في التعويم
+				راجع شرح الخاصيتين float و clear من الإنترنت واليوتيوب
+				-->
+        </div>
+		<hr>
+		<p>أركان الإسلام الخمسة: كتابة باستخدام خاصية flex</p>
+		<div class="flex_father">
+			<div class="flex_divs">شهادة أن لا إله إلا الله وأن محمدًا رسول الله</div>
+			<div class="flex_divs">إقامة الصلاة</div>
+			<div class="flex_divs">إيتاء الزكاة</div>
+			<div class="flex_divs">صوم رمضان</div>
+			<div class="flex_divs">حج بيت الله الحرام</div>
+        </div>
+		<hr>
+		<p>أركان الإسلام الخمسة: كتابة باستخدام خاصية grid</p>
+		<div class="grid_father">
+			<div class="grid_divs">شهادة أن لا إله إلا الله وأن محمدًا رسول الله</div>
+			<div class="grid_divs">إقامة الصلاة</div>
+			<div class="grid_divs">إيتاء الزكاة</div>
+			<div class="grid_divs">صوم رمضان</div>
+			<div class="grid_divs">حج بيت الله الحرام</div>
+        </div>
+		<hr>
+		
+		<div dir="ltr" class="lots" style="background-color:red; width:80px; height:80px; overflow:auto;">
+            We love Islam very much. We love Islam very much.
+            <!--
+            overflow:
+            visible; القيمة الإفتراضية، إذا كان الكلام كثيرا يخرج عن نطاق المحتوى
+            hidden; إذا كان الكلام كثيرا فإنه يتم إخفاؤه
+            auto; إذا كان الكلام كثيرا، يتم إظهار مؤشر السحب
+            scroll; يتم إظهار مؤشر السحب سواء كان الكلام كثيرا أو لا
+            -->
+		</div>
+		<p class="ض">ض ض ض &amp; ض ض ض</p>
+		<!--
+		"&amp;" draws the "&"
+		-->
+	</body>
+</html>
